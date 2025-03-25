@@ -14,7 +14,8 @@ public class CreateLead extends BaseClass {
 	
 	public void creatreLead() throws Throwable {
 		String lastname = eLib.getDataFromExcel("Sheet8", 1, 2) + jLib.getrandomnu();
-		String company = eLib.getDataFromExcel("Sheet8", 1, 3);
+		String company = eLib.getDataFromExcel("Sheet8", 1, 3)+ jLib.getrandomnu();
+		System.out.println(company);
 		
 		HomePage hm = new HomePage(driver);
 		hm.getLeadLink().click();
@@ -24,14 +25,14 @@ public class CreateLead extends BaseClass {
 		String text = lead.getHeaderText().getText();
 		String companytext = lead.getCompanytext().getText();
 		System.out.println(companytext);
-		Assert.assertTrue(text.contains(lastname));
+		Assert.assertTrue(text.trim().contains(lastname));
 
 		/*if (text.contains(lastname)) {
 			System.out.println(lastname + " name is verified");
 		} else {
 			System.out.println(lastname + " name is not verified");
 		}*/
-		Assert.assertEquals(companytext, company);
+		Assert.assertEquals(companytext.trim(), company);
 		/*if (companytext.equals(company)) {
 			System.out.println(company + " name is verified");
 		} else {
@@ -55,13 +56,13 @@ public class CreateLead extends BaseClass {
 		String text = lead.getHeaderText().getText();
 		String companytext = lead.getCompanytext().getText();
 		String mbnotext = lead.getMobilenotext().getText();
-		Assert.assertTrue(text.contains(lastname));
+		Assert.assertTrue(text.trim().contains(lastname));
 //		if (text.equals(lastname)) {
 //			System.out.println(lastname + " name is verified");
 //		} else {
 //			System.out.println(lastname + " name is not verified");
 //		}
-		Assert.assertEquals(companytext, company);	
+		Assert.assertEquals(companytext.trim(), company);	
 //		if (companytext.equals(company)) {
 //			System.out.println(company + " name is verified");
 //		} else {

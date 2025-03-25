@@ -35,11 +35,11 @@ public class webdriverutility {
 	//implicitly wait
 	 public void waitforpagetoload(WebDriver driver) {
 		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		 
 	 }
 	 
-	 public void Closewindow(WebDriver driver) {
-		 driver.quit();
+	 public void Closewindow(WebDriver driver) 
+	 {
+	driver.quit();
 		 }
 	 
 	 //explicitly wait

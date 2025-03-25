@@ -7,7 +7,7 @@ import com.comcast.crm.basetest.BaseClass;
 import com.comcast.crm.objectrepositoryutility.HomePage;
 import com.comcast.crm.objectrepositoryutility.TroubleTicketPage;
 @Listeners(com.comcast.crm.Listner_utility.ListnerImplementationClass.class)
-@Test(groups = "smokeTest")
+@Test(groups = "regressionTest")
 
 public class CreateTroubleTickt extends BaseClass {
 	public void troubleticket() throws Throwable {

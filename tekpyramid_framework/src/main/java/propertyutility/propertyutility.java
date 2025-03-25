@@ -9,7 +9,7 @@ import java.util.Properties;
 public class propertyutility {
 	
 	public String getDataFromPropertiesFile(String key) throws Throwable {
-		FileInputStream fis=new FileInputStream("C:\\Users\\admin\\OneDrive\\Desktop/commondata.properties");
+		FileInputStream fis=new FileInputStream("C:\\Users\\admin\\OneDrive\\Desktop\\automationExercise.properties");
 		Properties prop= new Properties();
 		prop.load(fis);
 		String data = prop.getProperty(key);

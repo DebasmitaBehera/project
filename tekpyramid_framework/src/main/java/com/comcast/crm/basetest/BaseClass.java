@@ -37,7 +37,7 @@ public class BaseClass {
 	public ExtentSparkReporter spark;
 	public ExtentReports report;
 
-	@BeforeSuite(groups = { "smokeTest","regessionTest" })
+	@BeforeSuite(groups = { "smokeTest", "regessionTest" })
 	public void configBS() throws SQLException {
 		System.out.println(" connect to DB");
 		dbLib.getDBConnection();
@@ -48,7 +48,8 @@ public class BaseClass {
 	public void configBC() throws Throwable {// String browser
 		System.out.println(" launch the browser");
 		// String Browser=browser;
-		String BROWSER = fLib.getDataFromPropertiesFile("Browser");
+//		String BROWSER =fLib.getDataFromPropertiesFile("Browser");
+		String BROWSER = System.getProperty("browser", fLib.getDataFromPropertiesFile("Browser"));
 		if (BROWSER.equals("edge")) {
 			driver = new EdgeDriver();
 
@@ -65,11 +66,19 @@ public class BaseClass {
 
 	public void configBM() throws Throwable {
 		System.out.println(" login");
-		String URL = fLib.getDataFromPropertiesFile("Url");
-		String USERNAME = fLib.getDataFromPropertiesFile("UserName");
-		String PASSWORD = fLib.getDataFromPropertiesFile("Password");
-		LoginPage lp = new LoginPage(driver);
+//        String URL = fLib.getDataFromPropertiesFile("Url");
+//		String USERNAME = fLib.getDataFromPropertiesFile("UserName");
+//		String BROWSER =fLib.getDataFromPropertiesFile("Browser");
+//        String PASSWORD = fLib.getDataFromPropertiesFile("Password");
+
+		 
+		String URL = System.getProperty("url", fLib.getDataFromPropertiesFile("url"));
+		String BROWSER = System.getProperty("browser", fLib.getDataFromPropertiesFile("Browser"));
+		String USERNAME = System.getProperty("username", fLib.getDataFromPropertiesFile("UserName"));
+		String PASSWORD = System.getProperty("password", fLib.getDataFromPropertiesFile("Password"));
+        LoginPage lp = new LoginPage(driver);
 		lp.LoginToApp(URL, USERNAME, PASSWORD);
+		
 	}
 
 	@AfterMethod(groups = { "smokeTest", "regessionTest" })
@@ -97,7 +106,7 @@ public class BaseClass {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 	}
 
 }

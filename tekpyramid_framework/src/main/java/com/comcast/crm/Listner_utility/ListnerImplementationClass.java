@@ -24,14 +24,15 @@ public class ListnerImplementationClass implements ITestListener, ISuiteListener
 
 	public ExtentReports report;
 	public static ExtentTest test;
-	
+
 	private static ThreadLocal<ExtentTest> extenttest = new ThreadLocal<ExtentTest>();
+
 	public void onStart(ISuite suite) {
 		System.out.println("on start of ISuite listner");
-	
+
 		// spark report config
 		String time = new Date().toString().replace(" ", "_").replace(":", "_");
-		ExtentSparkReporter spark = new ExtentSparkReporter("./AdvanceReports/report_"+time+".html");
+		ExtentSparkReporter spark = new ExtentSparkReporter("./AdvanceReports/report_" + time + ".html");
 		spark.config().setDocumentTitle("CRM Test suite Reults");
 		spark.config().setReportName("CRM Report");
 		spark.config().setTheme(Theme.DARK);
